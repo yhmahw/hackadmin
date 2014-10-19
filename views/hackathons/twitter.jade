@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  .container.admin-container
+    h1 Tweets
+
+  .container(style="padding: 0")
+    .announcements
+      -var index=0
+      each msg in tweets
+        .row
+          // if index++ % 2 == 0
+          .col-md-12
+            .message.panel.panel-default
+              .panel-body
+                p.text.tweet-text= msg.text
+          //
+            else
+              .col-md-9.col-md-offset-3
+                .message.panel.panel-default
+                  .panel-body
+                    p.text= msg.text
+                    p.time
+                      span.pull-right= msg.dateTime

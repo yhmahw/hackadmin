@@ -111,6 +111,47 @@ router.get('/:id/announcements', function(req, res) {
   });
 });
 
+router.get('/:id/twitter', function(req, _res) {
+  var name = req.params.id;
+
+  var tweets = [
+    {
+      text: "http://i1.kym-cdn.com/entries/icons/original/000/001/030/dickbutt.jpg"
+    },
+    {
+      text: "Poopin."
+    },
+    {
+      text: "I'm a tweet"
+    },
+    {
+      text: "Just hoppin' on the birdman."
+    }
+  ]
+
+  _res.render('hackathons/twitter', { name: name, tweets: tweets });
+
+  return;
+
+  var url = baseUrl + "/twitter"
+
+  unirest.get(url)
+  .headers({ 'Content-Type': 'application/json' })
+  .send({})
+  .end(function (res) {
+    var status = res.statusCode;
+    var data = res.body;
+    if (status == 200) {
+      console.log("successfully loaded tweets: ", data);
+      _res.render('hackathons/show', data);
+    } else {
+      console.log("show hackathon error: ", status, data);
+      _res.end();
+    }
+  });
+
+});
+
 router.post('/:id/raffle', function(req, _res) {
   var name = req.params.id;
   if(!req.body) {

@@ -143,6 +143,19 @@ $(function () {
 		console.log("status: ")
 	});
 
+	function isUrl(text) {
+		return !!text.match( /^(http|https):\/\/\S*(\.jpg|\.png|\.jpeg|\.svg|\.gif|\.tif)$/ );
+	};
+
+	$('.tweet-text').each(function() {
+		console.log("this: ", this);
+		var text = $(this).html();
+		console.log("text: ", text);
+		if(isUrl(text)) {
+			$(this).parent().append('<img src="' + text + '">');
+		}
+	});
+
 	/* ---------------------------------------------------------
 	 * Countdown
 	 */
