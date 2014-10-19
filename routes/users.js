@@ -88,7 +88,7 @@ router.post('/text/android', function(req, _res) {
 
   var url = baseUrl + "/text/" + phone;
 
-  unirest.put(url)
+  unirest.post(url)
   .headers({ 'Content-Type': 'application/json' })
   .send({ message: downloadMessage })
   .end(function (res) {
