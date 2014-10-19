@@ -36,6 +36,18 @@ html
               a(href='/hackathons/#{name}/announcements') Announcements
             li
               a(href='/hackathons/#{name}/twitter') Twitter
+            li.dropdown
+              a.dropdown-toggle(href='#', data-toggle='dropdown')
+                | Static Pages
+                span.caret
+              ul.dropdown-menu(role='menu')
+                li
+                  a(href='/landing.html') Landing
+                li
+                  a(href='/signup.html') Signup
+                li
+                  a(href='/android.html') Mobile Landing
+
 
     block content
 
