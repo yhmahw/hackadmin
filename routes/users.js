@@ -84,7 +84,7 @@ router.post('/text/android', function(req, _res) {
   console.log("text android body: ", req.body);
 
   var downloadMessage = 'Download "You Had Me @ Hello World" app here: ' +
-                        'gethelloworld.me'
+                        'http://goo.gl/o1cqXX';
 
   var url = baseUrl + "/text/" + phone;
 
