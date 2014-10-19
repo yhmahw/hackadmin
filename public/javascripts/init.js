@@ -143,16 +143,17 @@ $(function () {
 		console.log("status: ")
 	});
 
-	function isUrl(text) {
-		return !!text.match( /^(http|https):\/\/\S*(\.jpg|\.png|\.jpeg|\.svg|\.gif|\.tif)$/ );
+	function parseUrl(text) {
+		return text.match( /((?:http|https):\/\/\S*(?:\.jpg|\.png|\.jpeg|\.svg|\.gif|\.tif))/g );
 	};
 
 	$('.tweet-text').each(function() {
 		console.log("this: ", this);
 		var text = $(this).html();
 		console.log("text: ", text);
-		if(isUrl(text)) {
-			$(this).parent().append('<img src="' + text + '">');
+		var url = parseUrl(text);
+		if(!!url) {
+			$(this).parent().append('<img style="max-height:360px;max-width:360px" src="' + url + '">');
 		}
 	});
 

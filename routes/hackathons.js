@@ -114,26 +114,26 @@ router.get('/:id/announcements', function(req, res) {
 router.get('/:id/twitter', function(req, _res) {
   var name = req.params.id;
 
-  var tweets = [
-    {
-      text: "http://i1.kym-cdn.com/entries/icons/original/000/001/030/dickbutt.jpg"
-    },
-    {
-      text: "Poopin."
-    },
-    {
-      text: "I'm a tweet"
-    },
-    {
-      text: "Just hoppin' on the birdman."
-    }
-  ]
+  // var tweets = [
+  //   {
+  //     text: "http://i1.kym-cdn.com/entries/icons/original/000/001/030/dickbutt.jpg"
+  //   },
+  //   {
+  //     text: "Poopin."
+  //   },
+  //   {
+  //     text: "I'm a tweet"
+  //   },
+  //   {
+  //     text: "Just hoppin' on the birdman."
+  //   }
+  // ]
 
-  _res.render('hackathons/twitter', { name: name, tweets: tweets });
+  // _res.render('hackathons/twitter', { name: name, tweets: tweets });
+  //
+  // return;
 
-  return;
-
-  var url = baseUrl + "/twitter"
+  var url = baseUrl + "/image"
 
   unirest.get(url)
   .headers({ 'Content-Type': 'application/json' })
@@ -143,7 +143,8 @@ router.get('/:id/twitter', function(req, _res) {
     var data = res.body;
     if (status == 200) {
       console.log("successfully loaded tweets: ", data);
-      _res.render('hackathons/show', data);
+      data.sort(function(a,b){return (a.time>=b.time ? -1 : 1);})
+      _res.render('hackathons/twitter', { name: name, tweets: data });
     } else {
       console.log("show hackathon error: ", status, data);
       _res.end();
