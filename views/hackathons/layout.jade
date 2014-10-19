@@ -22,10 +22,11 @@ html
             span.icon-bar
           a#brand.navbar-brand(href='/hackathons/#{name}')= name
         #navbar-collapse.collapse.navbar-collapse
-          form.navbar-form.navbar-right(role='search')
-            .form-group
-              input.form-control(type='text', placeholder='Search')
-            button.btn.btn-default(type='submit') Search
+          //
+            form.navbar-form.navbar-right(role='search')
+              .form-group
+                input.form-control(type='text', placeholder='Search')
+              button.btn.btn-default(type='submit') Search
           ul.nav.navbar-nav.navbar-right
             li
               a(href='/hackathons/#{name}') Participants
@@ -34,8 +35,7 @@ html
             li
               a(href='/hackathons/#{name}/announcements') Announcements
 
-    .container.admin-container
-      block content
+    block content
 
     script(src="/javascripts/jquery.min.js")
     script(src="/javascripts/jquery.backstretch.min.js")

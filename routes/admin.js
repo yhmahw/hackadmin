@@ -5,7 +5,7 @@ var router = express.Router();
 
 var baseUrl = "http://api-yhmahw.herokuapp.com";
 
-router.get('/:id', function(req, _res) {
+router.get('/:id', function(req, res) {
   var user = req.params.id;
   console.log("id: ", user);
 

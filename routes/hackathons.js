@@ -70,6 +70,99 @@ router.get('/:id/raffle', function(req, res) {
   res.render('hackathons/raffle', { name: name });
 });
 
+router.get('/:id/announcements', function(req, res) {
+  var name = req.params.id;
+  var messages = [
+    {
+      text: "Wifi is BACK!! Thanks for your cooperation and happy hacking!",
+      dateTime: "10/18/2014 4:17 am"
+    },
+    {
+      text: "Wifi is officially down, but we'll have it back up asap! Stay posted!",
+      dateTime: "10/18/2014 3:39 am"
+    },
+    {
+      text: "Company X is giving a tech talk in B012 @ 2am, check it out.",
+      dateTime: "10/18/2014 1:32 am"
+    },
+    {
+      text: "Hackers! Sign in at the back door and grab some food! :D",
+      dateTime: "10/17/2014 6:36 pm"
+    }
+  ];
+
+  res.render('hackathons/announcements', { name: name, messages: messages });
+
+  return;
+
+  unirest.get(url)
+  .headers({ 'Content-Type': 'application/json' })
+  .send({})
+  .end(function (res) {
+    var status = res.statusCode;
+    var data = res.body;
+    if (status == 200) {
+      console.log("successfully loaded hackathon: ", data);
+      _res.render('hackathons/show', data);
+    } else {
+      console.log("show hackathon error: ", status, data);
+      _res.end();
+    }
+  });
+});
+
+router.post('/:id/raffle', function(req, _res) {
+  var name = req.params.id;
+  if(!req.body) {
+    console.log("error, no body in raffle request");
+    return;
+  }
+  var msg = req.body.message;
+
+  var url= baseUrl + "/raffle/" + name;
+
+  unirest.post(url)
+  .headers({ 'Content-Type': 'application/json' })
+  .send({ message: msg })
+  .end(function (res) {
+    var status = res.statusCode;
+    if (status == 200) {
+      var user = res.body.winner;
+      console.log("raffle winner: ", user);
+      _res.send(user);
+    } else {
+      console.log("raffle error: ", status, res.body.message);
+      _res.end();
+    }
+  });
+});
+
+router.post('/:id/announce', function(req, _res) {
+  var name = req.params.id;
+  if(!req.body) {
+    console.log("error, no body in raffle request");
+    return;
+  }
+  var msg = req.body.message;
+
+  var url= baseUrl + "/text/" + name;
+
+  unirest.post(url)
+  .headers({ 'Content-Type': 'application/json' })
+  .send({ message: msg })
+  .end(function (res) {
+    var status = res.statusCode;
+    if (status == 200) {
+      var data = res.body;
+      console.log("announcement sent: ", data);
+      _res.send(data);
+    } else {
+      console.log("announcement error: ", status, res.body.message);
+      _res.end();
+    }
+  });
+});
+
 router.post('/login', function(req, _res) {
   var token = req.body.access_token;
   console.log("token: ", token);

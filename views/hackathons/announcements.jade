@@ -1,0 +1,30 @@
+extends layout
+
+block content
+  .container.admin-container
+    h1 Announcements
+    input#announce-input
+    br
+    br
+    button#announce-btn.btn.btn-default Send Announcement
+
+  .container(style="padding: 0")
+    .announcements
+      -var index=0
+      each msg in messages
+        .row
+          // if index++ % 2 == 0
+          .col-md-12
+            .message.panel.panel-default
+              .panel-body
+                p.text= msg.text
+                p.time
+                  span.pull-right= msg.dateTime
+          //
+            else
+              .col-md-9.col-md-offset-3
+                .message.panel.panel-default
+                  .panel-body
+                    p.text= msg.text
+                    p.time
+                      span.pull-right= msg.dateTime

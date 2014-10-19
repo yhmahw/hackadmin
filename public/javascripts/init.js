@@ -194,9 +194,40 @@ $(function () {
 		})
 		.done(function(res) {
 			console.log("raffle response: ", res);
+			$('#user').html('<img width="64" style="display:inline;border-radius: 32px" src="' + res.avatarURL + '"> <h2 style="margin-left:10px;display:inline">' + res.name + '</h2><h3>' + res.phone + '</h3><h3>' + res.email + '</h3><h3> github.com/' + res.userId + '</h3>');
 			$raffle_btn.html('Sent!');
 			setTimeout(function() {
 				$raffle_btn.html('Raffle!');
+			}, 2000);
+		});
+	});
+
+	/* Announcements */
+	$('#announce-btn').click(function() {
+		var message = $('#announce-input').val();
+		var name = $('#brand').html();
+		var notice = 'Are you sure you want to send this message to all your hackers?';
+		var $btn = $('#announce-btn');
+
+		if(!confirm(notice + ' "' + message + '"')) {
+			return false;
+		}
+
+		$btn.html('Sending...');
+
+		console.log('message: ', message);
+		console.log('name: ', name);
+
+		var url = baseUrl + "/hackathons/" + name + "/announce";
+
+		$.post(url, {
+			message: message
+		})
+		.done(function(res) {
+			console.log("announcement response: ", res);
+			$btn.html('Sent!');
+			setTimeout(function() {
+				$btn.html('Send Announcement');
 			}, 2000);
 		});
 	});
