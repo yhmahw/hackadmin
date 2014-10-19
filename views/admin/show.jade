@@ -1,0 +1,13 @@
+extends ../layout
+
+block content
+  h1 Choose a hackathon...
+  .actions
+    button.btn.btn-block
+      i.fa.fa-plus
+      Add new hackathon
+  .clearfix
+  .hackathons
+    each name in hackathons
+      .hackathon(id='#{name}')
+        span.name= name

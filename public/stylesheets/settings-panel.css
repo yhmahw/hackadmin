@@ -1,0 +1,46 @@
+.settings-btn {
+  position:fixed;
+  width:auto;
+  height:auto;
+  top:0px;
+  z-index:9998;
+  color:white;
+  font-size:20px;
+  padding:8px 13px;
+  background:rgba(0,0,0,0.38);
+  transition:all .5s ease;
+  -webkit-transition:all .5s ease;
+  -moz-transition:all .5s ease;
+  -o-transition:all .5s ease
+}
+
+.settings-panel {
+  background:rgba(0,0,0,0.61);
+  display:none;
+  left:0;
+  position:fixed;
+  top:40px;
+  width:150px;
+  z-index:9998;
+  color:#FFF;
+  padding:7px 15px;
+  font-size:14px
+}
+
+.settings-panel ul {
+  list-style:none;
+  padding:0
+}
+
+.settings-panel li {
+  margin:5px 0
+}
+
+.settings-panel li i {
+  margin-right:7px
+}
+
+.settings-panel .current {
+  color:#fff;
+  font-weight:bold
+}

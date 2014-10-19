@@ -1,0 +1,9 @@
+extends ../layout
+
+block content
+  h1= name
+  p Welcome to #{name} admin panel. Please log in.
+  .login
+    a#github-admin-button.btn.btn-block.btn-social.btn-github.btn-custom
+      i.fa.fa-github
+      span Log in with Github

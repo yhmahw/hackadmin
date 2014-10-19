@@ -1,0 +1,52 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap.css')
+    link(rel='stylesheet', href='/stylesheets/font-awesome.min.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap-social.css')
+    link(rel="stylesheet", href="/stylesheets/bootstrapValidator.min.css")
+    link(rel="stylesheet", href="/stylesheets/ladda-themeless.min.css")
+    link(rel="stylesheet", href="/stylesheets/animate.min.css")
+    link(rel="stylesheet", href="/stylesheets/app.css")
+    link(rel='stylesheet', href='/stylesheets/settings-panel.css')
+  body
+    nav.navbar.navbar-default(role='navigation')
+      .container-fluid
+        .navbar-header
+          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar-collapse')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a#brand.navbar-brand(href='/hackathons/#{name}')= name
+        #navbar-collapse.collapse.navbar-collapse
+          form.navbar-form.navbar-right(role='search')
+            .form-group
+              input.form-control(type='text', placeholder='Search')
+            button.btn.btn-default(type='submit') Search
+          ul.nav.navbar-nav.navbar-right
+            li
+              a(href='/hackathons/#{name}') Participants
+            li
+              a(href='/hackathons/#{name}/raffle') Raffle
+            li
+              a(href='/hackathons/#{name}/announcements') Announcements
+
+    .container.admin-container
+      block content
+
+    script(src="/javascripts/jquery.min.js")
+    script(src="/javascripts/jquery.backstretch.min.js")
+    script(src="/javascripts/bootstrap.min.js")
+    script(src="/javascripts/jquery.countdown.min.js")
+    script(src="/javascripts/bootstrapValidator.min.js")
+    script(src="/javascripts/emailAddress.js")
+    script(src="/javascripts/spin.min.js")
+    script(src="/javascripts/ladda.min.js")
+    script(src="/javascripts/retina.min.js")
+    script(src="/javascripts/wow.min.js")
+    script(src="/javascripts/oauth.js")
+    script(src="/javascripts/init.js")
+    script(src="/javascripts/settings-panel.js")

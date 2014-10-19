@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  h1 Participants
+  table.table.table-hover
+    tr
+      th username
+      th email
+      th phone
+      th status
+    each person in members
+      tr
+        td= person.userId
+        td= person.email
+        td= person.phone
+        td
+          select.status(id='#{person.userId}')
+            each opt in ['subscribed', 'applied', 'accepted', 'denied', 'waitlisted', 'in_attendance']
+              if person.status === opt
+                option(selected)= opt
+              else
+                option= opt
