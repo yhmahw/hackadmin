@@ -18,7 +18,7 @@ for(var i=0; i<ca.length; i++) {
 return "";
 }
 
-var baseUrl = "http://localhost:3000"
+var baseUrl = "http://hack-admin.herokuapp.com"
 
 $(function () {
 	"use strict";
